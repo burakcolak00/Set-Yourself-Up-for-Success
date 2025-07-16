@@ -3,6 +3,8 @@
  */
 package org.example;
 
+import java.util.ArrayList;
+
 public class App {
     public String getGreeting() {
         return "Hello World!";
@@ -10,5 +12,25 @@ public class App {
 
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
+
+        DuplicateElementRemover<String> remover = new DuplicateElementRemover<>();
+        ArrayList<String> list = new ArrayList<>();
+        list.add("apple");
+        list.add("banana");
+        list.add("apple"); // duplicate
+        list.add("orange");
+
+        ArrayList<String> uniqueList = remover.removeDuplicates(list);
+        System.out.println("Unique elements: " + uniqueList);
+
+        ArrayList<Integer> intList = new ArrayList<>();
+        intList.add(1);
+        intList.add(2);
+        intList.add(2); // duplicate
+        intList.add(3);
+
+        DuplicateElementRemover<Integer> intRemover = new DuplicateElementRemover<>();
+        ArrayList<Integer> uniqueIntList = intRemover.removeDuplicates(intList);
+        System.out.println("Unique integer elements: " + uniqueIntList);
     }
 }
